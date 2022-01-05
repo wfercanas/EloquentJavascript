@@ -6,5 +6,16 @@
 
 let text = "'I'm the cook,' he said, 'it's my job.'";
 // Change this call.
-console.log(text.replace(/\b'/g, '!'));
+console.log(
+  text.replace(/^'|'$|'\s|\s'/g, (match) => {
+    console.log("match: ", `/${match}/`);
+    if (match.length === 1) {
+      return '"';
+    } else if (match[0] === "'") {
+      return '" ';
+    } else {
+      return ' "';
+    }
+  })
+);
 // → "I'm the cook," he said, "it's my job."
